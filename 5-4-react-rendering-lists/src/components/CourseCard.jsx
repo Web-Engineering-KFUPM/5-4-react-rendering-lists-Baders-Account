@@ -4,6 +4,7 @@ import TaskItem from "./TaskItem";
 export default function CourseCard({ course, index, onMutateCourse }) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   function toggleTask(id) {
    
@@ -14,16 +15,32 @@ export default function CourseCard({ course, index, onMutateCourse }) {
   }
 
   function addTask(e) {
-    e.preventDefault();
+
+      
+      
+      setTasks([...tasks, title]);
+
+      e.preventDefault();
+      
    
   }
 
   return (
     <article className="course card">
       <header className="cardHeader">
+        
         <h2>{course.title}</h2>
  
       </header>
+
+      
+      
+
+         
+      
+
+
+      
 
     
       <form onSubmit={addTask} className="newTask">
@@ -34,6 +51,22 @@ export default function CourseCard({ course, index, onMutateCourse }) {
           placeholder="Task title"
           aria-label="Task title"
         />
+
+
+        <ul className="tasks" > 
+
+              {tasks.map( (task, index) => ( 
+          <TaskItem 
+            key={task.index} 
+            task={task} 
+            onToggle={toggleTask} 
+            onDelete={deleteTask} 
+          />
+
+                ))}
+      </ul>
+
+
         <div className="dateRow">
           <input
             type="date"
@@ -41,9 +74,15 @@ export default function CourseCard({ course, index, onMutateCourse }) {
             onChange={e => setDate(e.target.value)}
             aria-label="Due date"
           />
+
+          
           <button type="submit" className="primary">Add</button>
+          
         </div>
+
+        
       </form>
+
     </article>
   );
 }

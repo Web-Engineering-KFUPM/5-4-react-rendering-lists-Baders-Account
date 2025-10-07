@@ -34,6 +34,7 @@ import "./index.css";
    ---------------------------------------------------------
    GOAL:
    Display all courses dynamically using .map() and <CourseCard />.
+   
 
    STEPS:
    1️⃣ Use the `courses` state variable which stores all course objects.
