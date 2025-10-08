@@ -9,7 +9,7 @@ export default function TaskItem({ task, onToggle, onDelete }) {
       </label>
 
      
-      <button className="ghost" aria-label="Delete task">
+      <button className="ghost" aria-label="Delete task" onClick={() => onDelete(task.id)}>
         ✕
       </button>
     </li>

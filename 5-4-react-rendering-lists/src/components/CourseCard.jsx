@@ -4,7 +4,7 @@ import TaskItem from "./TaskItem";
 export default function CourseCard({ course, index, onMutateCourse }) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
-  const [tasks, setTasks] = useState([]);
+  //const [tasks, setTasks] = useState([]);
 
   function toggleTask(id) {
    
@@ -18,7 +18,7 @@ export default function CourseCard({ course, index, onMutateCourse }) {
 
       
       
-      setTasks([...tasks, title]);
+      
 
       e.preventDefault();
       
@@ -32,7 +32,28 @@ export default function CourseCard({ course, index, onMutateCourse }) {
         <h2>{course.title}</h2>
  
       </header>
+      <section className="tasksSection">
 
+
+        { course.tasks.length === 0 ?
+          (<p>No Tasks yet</p>) : (
+        <ul className="tasks" > 
+
+              {course.tasks.map( task=> ( 
+          <TaskItem 
+            key={task.id} 
+            task={task} 
+            onToggle={toggleTask} 
+            onDelete={deleteTask} 
+          />
+          
+
+                ))}
+      </ul>
+          ) }
+
+
+      </section>
       
       
 
@@ -53,18 +74,7 @@ export default function CourseCard({ course, index, onMutateCourse }) {
         />
 
 
-        <ul className="tasks" > 
-
-              {tasks.map( (task, index) => ( 
-          <TaskItem 
-            key={task.index} 
-            task={task} 
-            onToggle={toggleTask} 
-            onDelete={deleteTask} 
-          />
-
-                ))}
-      </ul>
+        
 
 
         <div className="dateRow">
@@ -76,7 +86,7 @@ export default function CourseCard({ course, index, onMutateCourse }) {
           />
 
           
-          <button type="submit" className="primary">Add</button>
+          <button type="submit" className="primary" >Add</button>
           
         </div>
 

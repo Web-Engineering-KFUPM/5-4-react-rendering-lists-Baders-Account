@@ -179,7 +179,7 @@ export default function App() {
       <header className="appHeader">
         <h1>
           Study Buddy <span className="blink">▍</span>
-        </h1>
+        </h1> 
         <p className="subtitle">Lists • Keys • Conditional Rendering</p>
       </header>
 
