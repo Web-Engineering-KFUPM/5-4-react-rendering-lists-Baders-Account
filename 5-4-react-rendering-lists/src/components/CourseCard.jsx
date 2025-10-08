@@ -7,19 +7,25 @@ export default function CourseCard({ course, index, onMutateCourse }) {
   //const [tasks, setTasks] = useState([]);
 
   function toggleTask(id) {
-   
+   onMutateCourse(index, tasks => tasks.map(t => t.id === id ? { ...t, isDone: !t.isDone } : t) )
   }
 
   function deleteTask(id) {
-    
+    onMutateCourse(index, tasks => tasks.filter(t => t.id !== id) )
   }
 
   function addTask(e) {
+      const newTask ={
+        id: new Date(),
+        title: title,
+        dueDate: date,
+        isDone: false,
 
+      }
+      onMutateCourse(index, tasks => [...tasks, newTask] )
+      setTitle("");
+      setDate("");
       
-      
-      
-
       e.preventDefault();
       
    
@@ -40,7 +46,7 @@ export default function CourseCard({ course, index, onMutateCourse }) {
 
 
         { course.tasks.length === 0 ?
-          (<p>No Tasks yet</p>) : (
+          (<p>No Tasks yet. Add your first one below.</p>) : (
         <ul className="tasks" > 
 
               {course.tasks.map( task=> ( 

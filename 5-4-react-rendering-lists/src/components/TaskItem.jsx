@@ -6,7 +6,9 @@ export default function TaskItem({ task, onToggle, onDelete }) {
        
 
       <label className="taskMain">
-        {!task.isDone && <DueBadge dueDate={task.dueDate}  />}
+        {task.title}
+        {!task.isDone  && <DueBadge dueDate={task.dueDate}  />}
+        
        
       </label>
 
