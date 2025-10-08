@@ -30,6 +30,10 @@ export default function CourseCard({ course, index, onMutateCourse }) {
       <header className="cardHeader">
         
         <h2>{course.title}</h2>
+
+        {course.tasks.map(t => t.isDone).every(Boolean) || course.tasks.length === 0 ? (
+          <span >All caught up!</span>): <span>Keep going!</span> }
+        
  
       </header>
       <section className="tasksSection">
